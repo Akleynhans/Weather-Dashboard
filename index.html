@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- Link the DayJS library -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous">
+    </script>
+
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <section id="search">
+        <!-- search bar and search history -->
+        <h2>Search for a City</h2>
+        <input name="city" id="searchInput" type="text">
+        <button id="searchBTN" >Search</button>
+        <div id="searchHistory"></div>
+    </section>
+
+    <section id="current">
+        <!-- current info -->
+        <h1></h1>
+        <p id="currentTemp"></p>
+        <p id="currentWind"></p>
+        <p id="currentHumidity"></p>
+    </section>
+
+    <section id="forcast">
+        <!-- 5 day forecast -->
+        <h2>5 Day Forecast:</h2>
+        <card>
+            <h3></h3>
+            <!-- logo -->
+            <p></p>
+            <p></p>
+            <p></p>
+        </card>
+    </section>
+
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
+
+<!-- search bar w/ button -->
+<!-- space for recent searches -->
+<!-- space for 5 day forcast including - date, logo, temp, wind, humidity -->
+<!-- space for current weather including - city, date, logo, temp, wind, humidity -->
+<!-- use jquery rows and columns -->
