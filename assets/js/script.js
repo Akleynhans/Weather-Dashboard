@@ -3,10 +3,13 @@ var searchBTN = document.querySelector('#searchBTN');
 var searchInput = document.querySelector('#searchInput');
 var historyContainer = document.querySelector('#searchHistory');
 var imgEl = document.querySelector('#iconEl');
+var forecastEl = document.querySelector('#forecast');
+var cardContainer = document.querySelector('#cardcontainer');
 
 
 var date = dayjs().format('MMM D, YYYY');
 var searchHistory = [];
+var fiveDay = [1,2,3,4,5];
 
 var APIkey = "39f7785d8aca749af9f6a4c21d391c17";
 
@@ -27,8 +30,8 @@ var lookupWeather = function (event) {
         historyBtns(city)
     }
 
-    // if array is more than 7 drop last one
-    if (searchHistory.length === 7) {
+    // if array is more than 10 drop last one
+    if (searchHistory.length === 11) {
         searchHistory.pop();
         historyContainer.removeChild(historyContainer.lastChild);
     }
@@ -76,14 +79,68 @@ var forcast = function (lat, lon) {
             currentStats.children[2].textContent = 'Temp: ' + currentTemp + ' °F';
             currentStats.children[3].textContent = 'Wind: ' + currentWind + ' MPH';
             currentStats.children[4].textContent = 'Humidity: ' + currentHumidity + ' %';
-
+            
             
             imgEl.src = iconURL;
             currentStats.style.border = "solid black";
+            var List = data.list;
+            console.log(List[0].dt_txt)
+            var i = 0;
+            // function to get 5day forecast
+            fiveDay.forEach(function(element) {
+                // find the applicable date stamps from the API data
+                var fivedayDates = dayjs().add(element, 'day').format('YYYY-MM-DD')
+                var dateID = fivedayDates + " 18:00:00";
+                
+                var index = List.findIndex(x => x.dt_txt === dateID);
+                
+                fivedayForecast(index, fivedayDates)
+            });
             
+            // use index to get data from API 
+            function fivedayForecast (index, fivedayDates) {
 
+                if (cardContainer.childElementCount <5) {
+
+                    // create elements
+                    var card = document.createElement('card');
+                    var title = document.createElement('h2');
+                    var image = document.createElement('img');
+                    var lineT = document.createElement('p');
+                    var lineW = document.createElement('p');
+                    var lineH = document.createElement('p');
+    
+                    // append elements
+                    cardContainer.append(card);
+                    card.append(title);
+                    card.append(image);
+                    card.append(lineT);
+                    card.append(lineW);
+                    card.append(lineH);
+                }
+
+                var Temp = data.list[index].main.temp;
+                var Wind = data.list[index].wind.speed;
+                var Humidity = data.list[index].main.humidity;
+                var iconID = data.list[index].weather[0].icon;
+                var iconURL = "http://openweathermap.org/img/w/" + iconID + ".png";
+            
+                // populate forecast cards
+                forecastEl.children[0].textContent = "5-Day Forecast:";
+                forecastEl.children[1].children[i].children[0].textContent = fivedayDates;
+                forecastEl.children[1].children[i].children[1].src = iconURL;
+                forecastEl.children[1].children[i].children[2].textContent = 'Temp: ' + Temp + ' °F';
+                forecastEl.children[1].children[i].children[3].textContent = 'Wind: ' + Wind + ' MPH';
+                forecastEl.children[1].children[i].children[4].textContent = 'Humidity: ' + Humidity + ' %';
+                
+                
+                i++
+                
+                
+            }
 
         });
+        
 }
 
 // save searches to local storage
@@ -123,7 +180,11 @@ function buttonClickHandler(event) {
     getCoordinates(city)
 }
 
+
+
 // event listener for search button
 searchBTN.addEventListener('click', lookupWeather)
 // event listener for search history buttons
 historyContainer.addEventListener('click', buttonClickHandler)
+
+// https://www.w3schools.com/css/tryit.asp?filename=trycss_website_layout_grid2

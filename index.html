@@ -23,37 +23,32 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-   
-        <div class="container">
-            <section class= "column left" id="search" >
-                <!-- search bar and search history -->
-                <h2>Search for a City:</h2>
-                <input name="city" id="searchInput" type="text" placeholder="London">
-                <button id="searchBTN">Search</button>
-                <div id="searchHistory"></div>
-            </section>
 
-            <section class="column right" id="current" >
-                <!-- current info -->
-                <h1></h1>
-                <img id="iconEl">
-                <p id="currentTemp"></p>
-                <p id="currentWind"></p>
-                <p id="currentHumidity"></p>
-            </section>
-        </div>
-   
+    <div class="container">
+        <section class="column left" id="search">
+            <!-- search bar and search history -->
+            <h2>Search for a City:</h2>
+            <input name="city" id="searchInput" type="text" placeholder="London">
+            <button id="searchBTN">Search</button>
+            <div id="searchHistory"></div>
+        </section>
 
-    <section id="forcast">
+        <section class="column right" id="current">
+            <!-- current info -->
+            <h1></h1>
+            <img id="iconEl">
+            <p id="currentTemp"></p>
+            <p id="currentWind"></p>
+            <p id="currentHumidity"></p>
+        </section>
+    </div>
+
+
+    <section class="column right" id="forecast">
         <!-- 5 day forecast -->
-        <h2></h2>
-        <card>
-            <h3></h3>
-            <!-- logo -->
-            <p></p>
-            <p></p>
-            <p></p>
-        </card>
+        <h1></h1>
+        <div id="cardcontainer">
+        </div>
     </section>
 
 
