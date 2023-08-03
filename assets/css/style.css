@@ -1,0 +1,65 @@
+/* elements */
+header {
+    background: linear-gradient(to right, #00d4ff 0%, #090979 35%, #020024 100%);
+    color: white;
+    text-align: center;
+    padding: 5px;
+
+}
+
+button {
+    padding: 2px;
+    margin: 4px 0;
+}
+
+p {
+    line-height: 2.5;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+/* classess */
+
+.column {
+    float: left;
+    padding: 10px;
+}
+
+.column.left {
+    width:20%;
+}
+
+.column.right {
+    width:70%;
+}
+
+.container {
+    margin-top: 10px;
+}
+
+/* ids */
+
+/* #current {
+    border: solid black;
+    margin-right: 5px;
+    
+} */
+
+
+#searchBTN {
+    background-color: #739ae3;
+    margin-bottom: 7px;
+}
+
+#searchHistory {
+    border-top: solid lightgrey;
+    padding-top: 5px;
+}
+
+#search,
+#searchHistory {
+    display: flex;
+    flex-direction: column;
+}

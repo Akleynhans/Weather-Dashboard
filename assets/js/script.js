@@ -2,6 +2,7 @@ var currentStats = document.querySelector('#current');
 var searchBTN = document.querySelector('#searchBTN');
 var searchInput = document.querySelector('#searchInput');
 var historyContainer = document.querySelector('#searchHistory');
+var imgEl = document.querySelector('#iconEl');
 
 
 var date = dayjs().format('MMM D, YYYY');
@@ -68,11 +69,19 @@ var forcast = function (lat, lon) {
             var currentTemp = data.list[0].main.temp;
             var currentWind = data.list[0].wind.speed;
             var currentHumidity = data.list[0].main.humidity;
+            var iconID = data.list[0].weather[0].icon;
+            var iconURL = "http://openweathermap.org/img/w/" + iconID + ".png";
 
             currentStats.children[0].textContent = data.city.name + ' - ' + date;
-            currentStats.children[1].textContent = 'Temp: ' + currentTemp + ' °F';
-            currentStats.children[2].textContent = 'Wind: ' + currentWind + ' MPH';
-            currentStats.children[3].textContent = 'Humidity: ' + currentHumidity + ' %';
+            currentStats.children[2].textContent = 'Temp: ' + currentTemp + ' °F';
+            currentStats.children[3].textContent = 'Wind: ' + currentWind + ' MPH';
+            currentStats.children[4].textContent = 'Humidity: ' + currentHumidity + ' %';
+
+            
+            imgEl.src = iconURL;
+            currentStats.style.border = "solid black";
+            
+
 
         });
 }
