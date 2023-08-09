@@ -68,7 +68,7 @@ var forcast = function (lat, lon) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            
             var currentTemp = data.list[0].main.temp;
             var currentWind = data.list[0].wind.speed;
             var currentHumidity = data.list[0].main.humidity;
@@ -187,4 +187,3 @@ searchBTN.addEventListener('click', lookupWeather)
 // event listener for search history buttons
 historyContainer.addEventListener('click', buttonClickHandler)
 
-// https://www.w3schools.com/css/tryit.asp?filename=trycss_website_layout_grid2
