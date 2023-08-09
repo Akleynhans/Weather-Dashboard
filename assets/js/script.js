@@ -43,7 +43,7 @@ var lookupWeather = function (event) {
 
 // use city to get lat and lon coordinates
 var getCoordinates = function (city) {
-    var locationURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
+    var locationURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIkey;
 
     fetch(locationURL)
 
@@ -61,7 +61,7 @@ var getCoordinates = function (city) {
 // use lat and lon to look up forecast
 var forcast = function (lat, lon) {
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&limit=5&appid=" + APIkey + "&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&limit=5&appid=" + APIkey + "&units=imperial";
     fetch(queryURL)
 
         .then(function (response) {
