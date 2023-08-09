@@ -84,15 +84,15 @@ var forcast = function (lat, lon) {
             imgEl.src = iconURL;
             currentStats.style.border = "solid black";
             var List = data.list;
-            console.log(List[0].dt_txt)
             var i = 0;
             // function to get 5day forecast
             fiveDay.forEach(function(element) {
                 // find the applicable date stamps from the API data
                 var fivedayDates = dayjs().add(element, 'day').format('YYYY-MM-DD')
-                var dateID = fivedayDates + " 18:00:00";
+                var dateID = fivedayDates + " 12:00:00";
                 
                 var index = List.findIndex(x => x.dt_txt === dateID);
+                
                 
                 fivedayForecast(index, fivedayDates)
             });
